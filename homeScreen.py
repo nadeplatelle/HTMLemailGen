@@ -1,5 +1,5 @@
 import streamlit as st
-import pyperclip
+# import pyperclip
 
 def generate_email_html(banner_url, email_text, left_image_url=None, left_image_width=200, right_image_url=None):
     # Remove any formatting from the text
@@ -75,7 +75,7 @@ if st.button("Generate HTML"):
     elif email_text:
         html_code = generate_email_html(banner_url, email_text, left_image_url, left_image_width, right_image_url)
         st.code(html_code, language='html')
-        pyperclip.copy(html_code)
+        # pyperclip.copy(html_code)
         st.success("HTML code has been copied to clipboard!")
 
 if st.button("Preview HTML"):
@@ -90,3 +90,4 @@ if st.button("Preview HTML"):
         st.markdown(html_code, unsafe_allow_html=True)
     else:
         st.error("Please provide the email text.")
+        
