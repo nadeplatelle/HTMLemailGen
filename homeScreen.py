@@ -3,19 +3,19 @@ import streamlit as st
 
 def generate_email_html(banner_url, email_text, left_image_url=None, left_image_width=200, right_image_url=None):
     # Remove any formatting from the text
-    email_text = email_text.replace('\n', ' ').replace('\r', ' ')
+    # email_text = email_text.replace('\n', ' ').replace('\r', ' ')
     # Split the email text into paragraphs
-    paragraphs = email_text.split('. ')
+    paragraphs = email_text.split('\n')
     # Wrap each paragraph with <p> tags
-    formatted_text = ''.join([f'<p>{para.strip()}.</p>' for para in paragraphs if para.strip()])
+    formatted_text = ''.join([f'<p>{para.strip()}</p>' for para in paragraphs if para.strip()])
     
     # Add left image if provided
     if left_image_url:
-        formatted_text = f'<img src="{left_image_url}" alt="Left Image" style="float: left; margin-right: 10px; width: {left_image_width}px; height: auto;">' + formatted_text
+        formatted_text = f'<img align="left" width="{left_image_width}" src="{left_image_url}" alt="Left Image" style="float: left; margin-right: 10px; width: {left_image_width}px; height: auto;">' + formatted_text
     
     # Add right image if provided
     if right_image_url:
-        formatted_text = f'<img src="{right_image_url}" alt="Right Image" style="float: right; margin-left: 10px; width: 200px; height: auto;">' + formatted_text
+        formatted_text = f'<img align="right" width="200" src="{right_image_url}" alt="Right Image" style="float: right; margin-left: 10px; width: 200px; height: auto;">' + formatted_text
     
     html_code = f"""
     <!DOCTYPE html>
